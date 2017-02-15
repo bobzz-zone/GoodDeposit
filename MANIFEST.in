@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include gooddeposit *.css
+recursive-include gooddeposit *.csv
+recursive-include gooddeposit *.html
+recursive-include gooddeposit *.ico
+recursive-include gooddeposit *.js
+recursive-include gooddeposit *.json
+recursive-include gooddeposit *.md
+recursive-include gooddeposit *.png
+recursive-include gooddeposit *.py
+recursive-include gooddeposit *.svg
+recursive-include gooddeposit *.txt
+recursive-exclude gooddeposit *.pyc
