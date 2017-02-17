@@ -4,7 +4,11 @@
 frappe.ui.form.on('Good Deposit', {
 	refresh: function(frm) {
 		if(frm.doc.docstatus==1) {
-			cur_frm.add_custom_button(__('Withdraw'), make_withdrawal, __("Make"));
+			cur_frm.add_custom_button(__('Withdraw'), function() {
+		frappe.model.open_mapped_doc({
+			method: "gooddeposit.good_deposit.doctype.good_deposit.good_deposit.make_withdrawal",
+			frm: cur_frm
+		})}, __("Make"));
 		}
 		if (frm.doc.docstatus===0) {
 				cur_frm.add_custom_button(__('Delivery Note'),
@@ -19,11 +23,5 @@ frappe.ui.form.on('Good Deposit', {
 						})
 					}, __("Get items from"));
 			}
-	},
-	make_withdrawal: function() {
-		frappe.model.open_mapped_doc({
-			method: "gooddeposit.good_deposit.doctype.good_deposit.good_deposit.make_withdrawal",
-			frm: cur_frm
-		})
 	}
 });
