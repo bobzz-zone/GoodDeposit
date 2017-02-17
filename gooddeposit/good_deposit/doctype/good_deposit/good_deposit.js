@@ -10,7 +10,7 @@ frappe.ui.form.on('Good Deposit', {
 				cur_frm.add_custom_button(__('Delivery Note'),
 					function() {
 						erpnext.utils.map_current_doc({
-							method: "gooddeposit.gooddeposit.doctype.gooddeposit.gooddeposit.make_deposit",
+							method: "gooddeposit.good_deposit.doctype.good_deposit.good_deposit.make_deposit",
 							source_doctype: "Delivery Note",
 							get_query_filters: {
 								docstatus: 1,
@@ -22,7 +22,7 @@ frappe.ui.form.on('Good Deposit', {
 	},
 	make_withdrawal: function() {
 		frappe.model.open_mapped_doc({
-			method: "gooddeposit.gooddeposit.doctype.gooddeposit.gooddeposit.make_withdrawal",
+			method: "gooddeposit.good_deposit.doctype.good_deposit.good_deposit.make_withdrawal",
 			frm: cur_frm
 		})
 	}

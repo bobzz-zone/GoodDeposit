@@ -5,7 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.model.document import Document
-
+from frappe.model.mapper import get_mapped_doc
 class GoodDeposit(Document):
 	pass
 @frappe.whitelist()
@@ -42,7 +42,7 @@ def make_deposit(source_name, target_doc=None):
 
 	def update_item(source, target, source_parent):
 		pass
-
+	
 	target_doc = get_mapped_doc("Delivery Note", source_name, {
 		"Delivery Note": {
 			"doctype": "Good Deposit",
@@ -51,7 +51,7 @@ def make_deposit(source_name, target_doc=None):
 			}
 		},
 		"Delivery Note Item": {
-			"doctype": "Good Deposit Item",
+			"doctype": "Good Deposit Item"
 		}
 	}, target_doc, set_missing_values)
 
