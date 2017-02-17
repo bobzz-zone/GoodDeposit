@@ -3,7 +3,7 @@
 
 frappe.ui.form.on('Good Withdraw', {
 	refresh: function(frm) {
-		if (this.frm.doc.docstatus===0) {
+		if (frm.doc.docstatus===0) {
 				cur_frm.add_custom_button(__('Good Deposit'),
 					function() {
 						erpnext.utils.map_current_doc({
