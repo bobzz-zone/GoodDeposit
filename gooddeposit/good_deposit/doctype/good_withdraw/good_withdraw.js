@@ -4,17 +4,14 @@
 frappe.ui.form.on('Good Withdraw', {
 	refresh: function(frm) {
 		if (this.frm.doc.docstatus===0) {
-				cur_frm.add_custom_button(__('Sales Order'),
+				cur_frm.add_custom_button(__('Good Deposit'),
 					function() {
 						erpnext.utils.map_current_doc({
-							method: "erpnext.selling.doctype.sales_order.sales_order.make_delivery_note",
-							source_doctype: "Sales Order",
+							method: "gooddeposit.gooddeposit.doctype.gooddeposit.gooddeposit.make_withdrawal",
+							source_doctype: "Good Deposit",
 							get_query_filters: {
 								docstatus: 1,
-								status: ["!=", "Closed"],
-								per_delivered: ["<", 99.99],
-								project: cur_frm.doc.project || undefined,
-								customer: cur_frm.doc.customer || undefined,
+								per_delivered: "Deposited",
 								company: cur_frm.doc.company
 							}
 						})
