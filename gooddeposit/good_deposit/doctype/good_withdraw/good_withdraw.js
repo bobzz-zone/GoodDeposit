@@ -7,7 +7,7 @@ frappe.ui.form.on('Good Withdraw', {
 				cur_frm.add_custom_button(__('Good Deposit'),
 					function() {
 						erpnext.utils.map_current_doc({
-							method: "gooddeposit.gooddeposit.doctype.gooddeposit.gooddeposit.make_withdrawal",
+							method: "gooddeposit.good_deposit.doctype.good_deposit.good_deposit.make_withdrawal",
 							source_doctype: "Good Deposit",
 							get_query_filters: {
 								docstatus: 1,

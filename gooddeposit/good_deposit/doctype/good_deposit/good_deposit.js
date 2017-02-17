@@ -4,7 +4,7 @@
 frappe.ui.form.on('Good Deposit', {
 	refresh: function(frm) {
 		if(frm.doc.docstatus==1) {
-			cur_frm.add_custom_button(__('Withdraw'), this.make_withdrawal, __("Make"));
+			cur_frm.add_custom_button(__('Withdraw'), make_withdrawal, __("Make"));
 		}
 		if (frm.doc.docstatus===0) {
 				cur_frm.add_custom_button(__('Delivery Note'),
