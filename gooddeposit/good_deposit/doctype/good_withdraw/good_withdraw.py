@@ -13,7 +13,7 @@ class GoodWithdraw(Document):
 			if item.deposit_item == "":
 				frappe.throw("Goods Withdrawal should be from Good Deposit")
 			else:
-				data = frappe.db.sql("""select qty-withdrawed as left from `tabGood Deposit Item` where name="{}" """.format(item.deposit_item),as_list=1)
+				data = frappe.db.sql("""select qty-withdrawed from `tabGood Deposit Item` where name="{}" """.format(item.deposit_item),as_list=1)
 				qty=0
 				for x in data:
 					qty=x[0]
