@@ -24,7 +24,7 @@ class GoodWithdraw(Document):
 					deposit = """ "{}" """.format(item.deposit)
 				else:
 					deposit = """{},"{}" """.format(deposit,item.deposit)
-		for item in self.item:
+		for item in self.items:
 			frappe.db.sql("""update `tabGood Deposit Item` set withdrawed=withdrawed+{} where name="{}" """.format(item.qty,item.deposit_item),as_list=1)
 		lists=frappe.db.sql("""select parent from `tabGood Deposit Item` where parent in ({}) and qty=withdrawed """.format(deposit),as_list=1)
 		deposit=""
