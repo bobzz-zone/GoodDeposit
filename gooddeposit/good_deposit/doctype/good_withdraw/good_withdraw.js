@@ -1,6 +1,7 @@
 // Copyright (c) 2016, bobzz.zone@gmail.com and contributors
 // For license information, please see license.txt
-
+cur_frm.add_fetch("item_code","item_name","item_name");
+cur_frm.add_fetch("item_code","description","description");
 frappe.ui.form.on('Good Withdraw', {
 	refresh: function(frm) {
 		if (frm.doc.docstatus===0) {

@@ -35,3 +35,14 @@ class GoodWithdraw(Document):
 				else:
 					deposit = """{},"{}" """.format(deposit,dep[0])
 		frappe.db.sql("""update `tabGood Deposit` set status="Withdrawed" where name IN ({}) """.format(deposit),as_list=1)
+	def on_cancel(self):
+		deposit=""
+		for item in self.items:
+			if item.deposit not in deposit:
+				if deposit=="":
+					deposit = """ "{}" """.format(item.deposit)
+				else:
+					deposit = """{},"{}" """.format(deposit,item.deposit)
+		for item in self.items:
+			frappe.db.sql("""update `tabGood Deposit Item` set withdrawed=withdrawed-{} where name="{}" """.format(item.qty,item.deposit_item),as_list=1)
+		frappe.db.sql("""update `tabGood Deposit` set status="Deposited" where name IN ({}) """.format(deposit),as_list=1)
