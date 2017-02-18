@@ -30,6 +30,7 @@ def make_withdrawal(source_name, target_doc=None):
 			"field_map": {
 				"name": "deposit_item",
 				"parent": "deposit",
+				"item_code":"item_code"
 			},
 			"postprocess": update_item
 		}
