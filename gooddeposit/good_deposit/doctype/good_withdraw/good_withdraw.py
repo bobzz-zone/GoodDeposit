@@ -29,7 +29,7 @@ class GoodWithdraw(Document):
 		lists=frappe.db.sql("""select parent from `tabGood Deposit Item` where parent in ({}) and qty=withdrawed """.format(deposit),as_list=1)
 		deposit=""
 		for dep in lists:
-			if lists[0] not in deposit:
+			if dep not in deposit:
 				if deposit=="":
 					deposit = """ "{}" """.format(lists[0])
 				else:
