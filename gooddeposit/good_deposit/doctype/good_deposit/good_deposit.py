@@ -31,8 +31,7 @@ def make_withdrawal(source_name, target_doc=None):
 				"name": "deposit_item",
 				"parent": "deposit",
 			},
-			"postprocess": update_item,
-			"condition": lambda doc: abs(doc.withdrawed) < abs(doc.qty) 
+			"postprocess": update_item
 		}
 	}, target_doc, set_missing_values)
 
