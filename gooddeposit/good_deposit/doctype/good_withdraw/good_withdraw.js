@@ -11,7 +11,7 @@ frappe.ui.form.on('Good Withdraw', {
 							source_doctype: "Good Deposit",
 							get_query_filters: {
 								docstatus: 1,
-								per_delivered: "Deposited",
+								status: "Deposited",
 								company: cur_frm.doc.company
 							}
 						})
