@@ -29,10 +29,10 @@ def make_withdrawal(source_name, target_doc=None):
 			"doctype": "Good Withdraw Item",
 			"field_map": {
 				"name": "deposit_item",
-				"parent": "deposit",
-				"item_code":"item_code"
+				"parent": "deposit"
 			},
-			"postprocess": update_item
+			"postprocess": update_item,
+			"condition": lambda doc: abs(doc.withdrawed) < abs(doc.qty)
 		}
 	}, target_doc, set_missing_values)
 
