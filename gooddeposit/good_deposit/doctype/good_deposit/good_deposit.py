@@ -52,6 +52,9 @@ def make_deposit(source_name, target_doc=None):
 				"docstatus": ["=", 1]
 			}
 		},
+		"field_map":{
+			"delivery_note":"name"
+		},
 		"Delivery Note Item": {
 			"doctype": "Good Deposit Item"
 		}
