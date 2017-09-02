@@ -4,7 +4,7 @@ cur_frm.add_fetch("item_code","item_name","item_name");
 cur_frm.add_fetch("item_code","description","description");
 frappe.ui.form.on('Good Withdraw', {
 	refresh: function(frm) {
-		if (frm.doc.docstatus===0) {
+		if (frm.doc.docstatus===3) {
 				cur_frm.add_custom_button(__('Good Deposit'),
 					function() {
 						erpnext.utils.map_current_doc({
