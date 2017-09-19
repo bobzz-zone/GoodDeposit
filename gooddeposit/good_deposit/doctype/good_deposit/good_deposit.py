@@ -29,11 +29,14 @@ def make_withdrawal(source_name, target_doc=None):
 				"docstatus": ["=", 1]
 			}
 		},
+		"field_map": {
+			"name": "gd"
+		},
 		"Good Deposit Item": {
 			"doctype": "Good Withdraw Item",
 			"field_map": {
-				"name": "deposit_item",
-				"parent": "deposit"
+				"name": "good_deposit_item",
+				"parent": "good_deposit"
 			},
 			"postprocess": update_item,
 			"condition": lambda doc: abs(doc.withdrawed) < abs(doc.qty)
