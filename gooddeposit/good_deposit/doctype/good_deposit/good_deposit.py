@@ -11,7 +11,7 @@ from frappe.model.mapper import get_mapped_doc
 class GoodDeposit(Document):
 	pass
 	def on_cancel(self):
-		for item in items:
+		for item in self.items:
 			if item.withdrawed>0:
 				frappe.throw("Item Already Withdrawed so it cant be cancelled")
 @frappe.whitelist()

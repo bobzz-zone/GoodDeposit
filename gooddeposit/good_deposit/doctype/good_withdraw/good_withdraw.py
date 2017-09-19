@@ -10,7 +10,7 @@ class GoodWithdraw(Document):
 	def on_submit(self):
 		auto=[]
 		for item in self.items:
-			result = frappe.db.sql("""select i.parent,i.name,i.qty-i.withdrawed from `tabGood Deposit Item` i join `tabGood Deposit` p on i.parent=p.name where p.customer="{}" and i.item_code="{}" and (qty-withdrawed)>0 order by p.date  """
+			result = frappe.db.sql("""select i.parent,i.name,i.qty-i.withdrawed from `tabGood Deposit Item` i join `tabGood Deposit` p on i.parent=p.name where p.customer="{}" and i.item_code="{}" and (qty-withdrawed)>0 order by p.date desc """
 				.format(self.customer,item.item_code),as_list=1)
 			target=item.qty
 			fullfill=0
@@ -57,7 +57,7 @@ class GoodWithdraw(Document):
 	def on_cancel(self):
 		auto=[]
 		for item in self.items:
-			result = frappe.db.sql("""select i.parent,i.name,i.withdrawed from `tabGood Deposit Item` i join `tabGood Deposit` p on i.parent=p.name where p.customer="{}" and i.item_code="{}" and i.withdrawed>0 order by p.date desc"""
+			result = frappe.db.sql("""select i.parent,i.name,i.withdrawed from `tabGood Deposit Item` i join `tabGood Deposit` p on i.parent=p.name where p.customer="{}" and i.item_code="{}" and i.withdrawed>0 order by p.date"""
 				.format(self.customer,item.item_code),as_list=1)
 			target=item.qty
 			fullfill=0
