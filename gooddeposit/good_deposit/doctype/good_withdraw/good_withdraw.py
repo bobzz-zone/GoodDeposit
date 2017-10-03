@@ -82,5 +82,8 @@ class GoodWithdraw(Document):
 		# 		else:
 		# 			deposit = """{},"{}" """.format(deposit,item.deposit)
 		for item in self.items:
+			if not item.deposit_item:
+				frappe.throw("Tidak bisa cancel withdrawal lama di akibatkan referensi deposit tidak ada")
+		for item in self.items:
 			frappe.db.sql("""update `tabGood Deposit Item` set withdrawed=withdrawed-{} where name="{}" """.format(item.qty,item.deposit_item),as_list=1)
 		#frappe.db.sql("""update `tabGood Deposit` set status="Deposited" where name IN ({}) """.format(deposit),as_list=1)

@@ -12,7 +12,7 @@ frappe.ui.form.on('Good Withdraw', {
 							method: "gooddeposit.good_deposit.doctype.good_deposit.good_deposit.make_withdrawal",
 							source_doctype: "Good Deposit",
 							target: me.frm,
-							date_field: "posting_date",
+							date_field: "date",
 							setters: {},
 							get_query_filters: {
 								docstatus: 1,
