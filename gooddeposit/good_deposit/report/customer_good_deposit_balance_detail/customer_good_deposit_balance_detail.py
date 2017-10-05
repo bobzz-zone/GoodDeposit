@@ -11,6 +11,6 @@ def execute(filters=None):
 		where = """ and p.customer = "{}" """.format(filters.get("customer"))
 	data = frappe.db.sql("""select p.name,p.customer,p.sales,d.item_code,d.item_name,(d.qty-d.withdrawed) as "sisa",d.rate,((d.qty-d.withdrawed)*d.rate) as "amount" ,dn.posting_date,p.delivery_note,d.description
 		from `tabGood Deposit Item` d join `tabGood Deposit` p on d.parent=p.name
-		join `tabDelivery Note` dn on dn.name=p.delivery_note
+		left join `tabDelivery Note` dn on dn.name=p.delivery_note
 		where d.qty>d.withdrawed {} """.format(where),as_list=1)
 	return columns, data
