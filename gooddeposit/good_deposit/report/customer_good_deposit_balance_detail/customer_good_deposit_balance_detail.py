@@ -9,7 +9,7 @@ def execute(filters=None):
 	where = ""
 	if filters.get("customer"):
 		where = """ and p.customer = "{}" """.format(filters.get("customer"))
-	data = frappe.db.sql("""select p.customer,p.name,p.sales,p.delivery_note,d.item_code,d.item_name,d.description,(d.qty-d.withdrawed) as "sisa",d.rate 
+	data = frappe.db.sql("""select p.date,p.customer,p.name,p.sales,p.delivery_note,d.item_code,d.item_name,d.description,(d.qty-d.withdrawed) as "sisa",d.rate 
 		from `tabGood Deposit Item` d join `tabGood Deposit` p on d.parent=p.name
 		where d.qty>d.withdrawed {} """.format(where),as_list=1)
 	return columns, data
